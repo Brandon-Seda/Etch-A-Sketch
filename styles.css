@@ -1,0 +1,7 @@
+#grids{
+    display:flexbox;
+    flex-wrap: wrap;
+    background-color: blue;
+
+
+}
