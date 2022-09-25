@@ -1,7 +1,37 @@
-#grids{
-    display:flexbox;
-    flex-wrap: wrap;
-    background-color: blue;
+#box{
+    background-color: white;
+}
 
 
+.btn-container{
+    background-color: lightgrey;
+}
+
+#black{
+    background-color: black;
+    width: 20px;
+    height: 20px;
+}
+#white{
+    background-color: #ffff;
+    width: 20px;
+    height: 20px;
+}
+#blue{
+    background-color: #0000ff;
+    width: 20px;
+    height: 20px;
+}
+
+#clear{
+    width: 50px;
+    height: 20px;
+}
+
+.grid-container{
+    width: 960px;
+    height: 500px;
+    border-style: solid;
+    border-color: aqua;
+    display: grid;
 }
