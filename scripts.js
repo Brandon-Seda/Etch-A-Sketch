@@ -28,13 +28,16 @@ whiteBtn.addEventListener('click', function(){
 let gridSize = 16;
 let cells = []
 
+createGrid(gridSize)
 
 //creates divs based on grid size or creates a default 16x16
 function createGrid(size){
 
     let cellTotal = size * size;
-    gridContainer.style.gridTemplateColumns = ('repeat(${size}, 1fr') ;
-    gridContainer.style.gridTemplateRows = ('repeat(${size}, 1fr') ;
+
+    gridContainer.style.gridTemplateColumns = (`repeat(${size}, 1fr`);
+    gridContainer.style.gridTemplateRows = (`repeat(${size}, 1fr`);
+    gridContainer.style.gridGap = ('.5px');
 
     for(let i=0; i < cellTotal; i++){
   
@@ -47,12 +50,9 @@ function createGrid(size){
     }
 }
 
-createGrid(5);
-
 //changes grid box color based on event happening
 function draw(e){
-    e.target.style.background = color;
-    
+    e.target.style.background = color; 
 }
 
 //clears the screen on button click
@@ -63,6 +63,7 @@ function clearGrid(){
 
 }
 
+//on mouse click clears a cell
 function clearCell(e){
     e.target.style.background = white;
 }
