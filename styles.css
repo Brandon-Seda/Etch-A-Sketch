@@ -4,6 +4,11 @@ h1{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+.interactions{
+    display:flex;
+    justify-content: center;
+}
+
 
 #box{
     background-color: white;
@@ -13,32 +18,28 @@ h1{
     background-color: lightgrey;
     padding: 1em;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 20px;
+    
 }
 
 #black{
     background-color: black;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 }
 #white{
     background-color: #ffff;
-    width: 20px;
-    height: 20px;
-}
-#blue{
-    background-color: #0000ff;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 }
 
 #clear{
-    width: 50px;
-    height: 20px;
+    width: 70px;
+    height: 30px;
+    font-size: medium;
 }
 
-.container{
+.display-container{
     display: flex;
     justify-content: center;
     align-items: center;
