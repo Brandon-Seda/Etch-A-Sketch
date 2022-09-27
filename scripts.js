@@ -1,20 +1,30 @@
+const DEFAULT_SIZE = 16;
+const DEFAULT_COLOR = '#000000';
+
 let black = '#000000';
 let white = '#FFFFFF';
-let color = black;
+let color = DEFAULT_COLOR;
 
 
 const gridContainer =  document.querySelector('.grid-container'); 
 const clearBtn = document.querySelector('#clear');
-const blueBtn = document.querySelector('#blue');
 const blackBtn = document.querySelector('#black');
 const whiteBtn = document.querySelector('#white');
+const gridSizeBtn = document.querySelector('#gridSizeBtn');
+
+let gridSize = document.getElementById('gridSize');  
+console.log(gridSize.value);
+
+function changeGridSize(){    
+    if(gridSize.value <= 0 || gridSize.value > 100){
+        alert("Invalid grid size!");
+    } else {
+        createGrid(gridSize.value);
+    }
+}
 
 clearBtn.addEventListener('click', clearGrid);
 
-blueBtn.addEventListener('click', function(){
-    console.log("blue button clicked");
-    color = 'blue';
-});
 blackBtn.addEventListener('click', function(){
     console.log("black button clicked");
     color = black;
@@ -25,13 +35,13 @@ whiteBtn.addEventListener('click', function(){
     color = white;
 });
 
-let gridSize = 16;
 let cells = []
 
-createGrid(gridSize)
+
 
 //creates divs based on grid size or creates a default 16x16
 function createGrid(size){
+    clearGrid();
 
     let cellTotal = size * size;
 
@@ -68,3 +78,6 @@ function clearCell(e){
     e.target.style.background = white;
 }
 
+window.onload = () =>{
+ createGrid(DEFAULT_SIZE);
+}
