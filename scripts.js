@@ -9,13 +9,13 @@ let color = DEFAULT_COLOR;
 const gridContainer =  document.querySelector('.grid-container'); 
 const clearBtn = document.querySelector('#clear');
 const blackBtn = document.querySelector('#black');
-const whiteBtn = document.querySelector('#white');
+const randomBtn = document.querySelector('#random');
 const gridSizeBtn = document.querySelector('#gridSizeBtn');
 
 let gridSize = document.getElementById('gridSize');  
 console.log(gridSize.value);
 
-function changeGridSize(){    
+function changeGridSize(){
     if(gridSize.value <= 0 || gridSize.value > 100){
         alert("Invalid grid size!");
     } else {
@@ -30,26 +30,24 @@ blackBtn.addEventListener('click', function(){
     color = black;
 
 });
-whiteBtn.addEventListener('click', function(){
-    console.log("white button clicked");
-    color = white;
+randomBtn.addEventListener('click', function(){
+    console.log("random button clicked");
+    getRandomColor();
 });
 
-let cells = []
+let cells = [];
 
-
-
-//creates divs based on grid size or creates a default 16x16
+//creates divs based on grid size or creates a default 16x16, removes all child nodes before creation
 function createGrid(size){
-    clearGrid();
+    gridContainer.innerHTML = "";
 
-    let cellTotal = size * size;
+    let gridTotal= size * size;
 
-    gridContainer.style.gridTemplateColumns = (`repeat(${size}, 1fr`);
+    gridContainer.style.gridTemplateColumns = (`repeat(${size}, minmax(0,1fr)`);
     gridContainer.style.gridTemplateRows = (`repeat(${size}, 1fr`);
-    gridContainer.style.gridGap = ('.5px');
+    // gridContainer.style.gridGap = ('.5px');
 
-    for(let i=0; i < cellTotal; i++){
+    for(let i=0; i < gridTotal; i++){
   
         cells[i] = document.createElement('div');
         cells[i].classList.add('box');
@@ -70,13 +68,25 @@ function clearGrid(){
     cells.forEach(item => {
         item.style = 'background-color: #FFFFFF';
     });
-
 }
 
 //on mouse click clears a cell
 function clearCell(e){
     e.target.style.background = white;
 }
+
+function getRandomColor(){
+    let opt1 = Math.floor(Math.random() * 256);
+    let opt2 = Math.floor(Math.random() * 256);
+    let opt3 = Math.floor(Math.random() * 256);
+
+    console.log(opt1, opt2, opt3);
+
+    color = (`rgb(${opt1},${opt2},${opt3})`);
+    randomBtn.style.background = color;
+
+}
+
 
 window.onload = () =>{
  createGrid(DEFAULT_SIZE);
