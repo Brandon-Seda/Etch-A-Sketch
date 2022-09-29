@@ -1,3 +1,9 @@
+body{
+    height:100vh;
+    background: linear-gradient(to top left, #938590, #850707, #1ca7bd, #ff0008);
+    background-size: 400%, 400%;
+}
+
 h1{
     display:flex;
     justify-content: center;
@@ -15,7 +21,6 @@ h1{
 }
 
 .btn-container{
-    background-color: lightgrey;
     padding: 1em;
     display: flex;
     gap: 20px;
@@ -27,16 +32,21 @@ h1{
     width: 30px;
     height: 30px;
 }
-#white{
-    background-color: #ffff;
-    width: 30px;
+#random{
+    width: 80px;
     height: 30px;
-}
+    font-size: medium;
+}   
 
 #clear{
     width: 70px;
     height: 30px;
     font-size: medium;
+}
+#gridSizeBtn{
+    width: 80px;
+    height: 30px; 
+    font-size: medium;  
 }
 
 .display-container{
@@ -52,5 +62,6 @@ h1{
     border-style: solid;
     border-color: aqua;
     border-width: 5px;
-    display: grid; 
+    display: grid;
+    background-color: white;
 }
