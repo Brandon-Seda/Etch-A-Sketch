@@ -5,11 +5,14 @@ let black = '#000000';
 let white = '#FFFFFF';
 let color = DEFAULT_COLOR;
 
+let pen = false;
+
 
 const gridContainer =  document.querySelector('.grid-container'); 
 const clearBtn = document.querySelector('#clear');
 const blackBtn = document.querySelector('#black');
 const randomBtn = document.querySelector('#random');
+const fillBtn = document.querySelector('#fill');
 const gridSizeBtn = document.querySelector('#gridSizeBtn');
 
 let gridSize = document.getElementById('gridSize');  
@@ -33,6 +36,10 @@ blackBtn.addEventListener('click', function(){
 randomBtn.addEventListener('click', function(){
     console.log("random button clicked");
     getRandomColor();
+});
+
+fillBtn.addEventListener('click', function(){
+    fillAll();
 });
 
 let cells = [];
@@ -61,6 +68,13 @@ function createGrid(size){
 //changes grid box color based on event happening
 function draw(e){
     e.target.style.background = color; 
+}
+
+//fills all squares
+function fillAll(){
+    cells.forEach(item => {
+        item.style.background = color;  
+    })
 }
 
 //clears the screen on button click
