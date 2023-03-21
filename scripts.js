@@ -1,21 +1,20 @@
 const DEFAULT_SIZE = 16;
 const DEFAULT_COLOR = "#000000";
 
-let black = "#000000";
-let white = "#FFFFFF";
 let color = DEFAULT_COLOR;
 
 let penActive = false;
 
 const gridContainer = document.querySelector(".grid-container");
 const clearBtn = document.querySelector("#clear");
-const blackBtn = document.querySelector("#black");
+const colorPicker = document.querySelector("#colorPicker");
 const randomBtn = document.querySelector("#random");
 const fillBtn = document.querySelector("#fill");
 const gridSizeBtn = document.querySelector("#gridSizeBtn");
 
 let gridSize = document.getElementById("gridSize");
-console.log(gridSize.value);
+
+colorPicker.oninput = (e) => color = e.target.value;
 
 function changeGridSize() {
   if (gridSize.value <= 0 || gridSize.value > 100) {
@@ -27,10 +26,6 @@ function changeGridSize() {
 
 clearBtn.addEventListener("click", clearGrid);
 
-blackBtn.addEventListener("click", function () {
-  console.log("black button clicked");
-  color = black;
-});
 randomBtn.addEventListener("click", function () {
   console.log("random button clicked");
   getRandomColor();
@@ -91,9 +86,7 @@ function fillAll() {
 
 //clears the screen on button click
 function clearGrid() {
-  cells.forEach((item) => {
-    item.style = "background-color: #FFFFFF";
-  });
+  gridContainer.innerHTML = ""
 }
 
 function getRandomColor() {
