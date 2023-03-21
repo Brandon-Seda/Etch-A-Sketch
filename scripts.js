@@ -10,19 +10,14 @@ const clearBtn = document.querySelector("#clear");
 const colorPicker = document.querySelector("#colorPicker");
 const randomBtn = document.querySelector("#random");
 const fillBtn = document.querySelector("#fill");
-const gridSizeBtn = document.querySelector("#gridSizeBtn");
+const sliderValue = document.querySelector("#sliderValue")
+const sizeSlider = document.querySelector("#sizeSlider");
 
 let gridSize = document.getElementById("gridSize");
 
 colorPicker.oninput = (e) => color = e.target.value;
-
-function changeGridSize() {
-  if (gridSize.value <= 0 || gridSize.value > 100) {
-    alert("Invalid grid size!");
-  } else {
-    createGrid(gridSize.value);
-  }
-}
+sizeSlider.onmousemove = (e) => updateSliderValue(e.target.value);
+sizeSlider.onchange = (e) => changeGridSize(e.target.value);
 
 clearBtn.addEventListener("click", clearGrid);
 
@@ -58,6 +53,16 @@ function createGrid(size) {
 
     gridContainer.appendChild(cells[i]);
   }
+}
+
+function changeGridSize(value){
+  gridSize = value;
+  updateSliderValue(value);
+  updateGrid();
+}
+
+function updateSliderValue(value){
+  sliderValue.innerHTML = `${value} x ${value}`;
 }
 
 //draws if pen is active
@@ -98,6 +103,11 @@ function getRandomColor() {
 
   color = `rgb(${opt1},${opt2},${opt3})`;
   randomBtn.style.background = color;
+}
+
+function updateGrid(){
+  clearGrid();
+  createGrid(gridSize);
 }
 
 window.onload = () => {
