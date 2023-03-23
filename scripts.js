@@ -4,12 +4,15 @@ const DEFAULT_COLOR = "#000000";
 let color = DEFAULT_COLOR;
 
 let penActive = false;
+let activeButton = false;
 
 const gridContainer = document.querySelector(".grid-container");
+
 const clearBtn = document.querySelector("#clear");
 const colorPicker = document.querySelector("#colorPicker");
-const randomBtn = document.querySelector("#random");
+const rainbowBtn = document.querySelector("#rainbow");
 const fillBtn = document.querySelector("#fill");
+
 const sliderValue = document.querySelector("#sliderValue")
 const sizeSlider = document.querySelector("#sizeSlider");
 
@@ -19,20 +22,24 @@ colorPicker.oninput = (e) => color = e.target.value;
 sizeSlider.onmousemove = (e) => updateSliderValue(e.target.value);
 sizeSlider.onchange = (e) => changeGridSize(e.target.value);
 
-clearBtn.addEventListener("click", clearGrid);
+clearBtn.addEventListener("mousedown", clearGrid);
 
-randomBtn.addEventListener("click", function () {
-  console.log("random button clicked");
-  getRandomColor();
+rainbowBtn.addEventListener("mousedown", function () {
+  if(activeButton == false){
+    activeButton = true;
+    getRainbow();
+  } else {
+    activeButton = false;
+  }
 });
 
-fillBtn.addEventListener("click", function () {
+fillBtn.addEventListener("mousedown", function () {
   fillAll();
 });
 
 let cells = [];
 
-//creates divs based on grid size or creates a default 16x16, removes all child nodes before creation
+//creates grid based on given value, defaults to 16x16, removes all child nodes before creation
 function createGrid(size) {
   gridContainer.innerHTML = "";
 
@@ -46,7 +53,7 @@ function createGrid(size) {
     cells[i] = document.createElement("div");
     cells[i].classList.add("box");
     cells[i].addEventListener("mouseover", draw)
-    cells[i].addEventListener("click", function(){
+    cells[i].addEventListener("mousedown", function(){
       if(!penActive) {activatePen()}
       else {disablePen()}
     });
@@ -84,8 +91,8 @@ function disablePen(){
 
 //fills all squares
 function fillAll() {
-  cells.forEach((item) => {
-    item.style.background = color;
+  cells.forEach((cell) => {
+    cell.style.background = color;
   });
 }
 
@@ -94,15 +101,16 @@ function clearGrid() {
   gridContainer.innerHTML = ""
 }
 
-function getRandomColor() {
-  let opt1 = Math.floor(Math.random() * 256);
-  let opt2 = Math.floor(Math.random() * 256);
-  let opt3 = Math.floor(Math.random() * 256);
+//returns a random color
+function getRainbow() {
 
-  console.log(opt1, opt2, opt3);
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
 
-  color = `rgb(${opt1},${opt2},${opt3})`;
-  randomBtn.style.background = color;
+  color = `rgb(${r},${g},${b})`;
+
+  return color;
 }
 
 function updateGrid(){
