@@ -24,31 +24,12 @@ h1{
     padding: 1em;
     display: flex;
     gap: 20px;
-    
 }
 
 button{
     height: 2em;
     font-size: medium;
     font-weight: bold;
-}
-
-#fill{
-    width: 75px;
-}
-
-#random{
-    width: 75px;
-}   
-
-#clear{
-    width: 75px;
-}
-
-#gridSizeBtn{
-    width: 80px;
-    height: 30px; 
-    font-size: medium;  
 }
 
 .display-container{
