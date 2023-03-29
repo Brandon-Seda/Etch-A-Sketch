@@ -10,33 +10,89 @@ h1{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.interactions{
-    display:flex;
-    justify-content: center;
-}
-
-
 #box{
     background-color: white;
 }
 
-.btn-container{
-    padding: 1em;
+container {
     display: flex;
-    gap: 20px;
 }
 
-button{
-    height: 2em;
-    font-size: medium;
-    font-weight: bold;
+
+.child-container {
+    flex: 1;
+    padding: 2em;
 }
 
-.display-container{
+.interactions {
+    gap: 5px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 2em;    
+}
+
+.interactions button:hover {
+    background-color: darkgray;
+    cursor: pointer;
+}
+
+.interactions .active{
+    background-color: darkgray;
+}
+
+button{ 
+    height: 2em;
+    width: 8em;
+    font-size: medium;
+    font-weight: bold;
+    background-color: aliceblue;
+}
+
+button,
+input[type='color'] {
+  transition: transform 0.1s ease-in-out;
+}
+
+button:hover,
+input[type='color']:hover {
+  transform: scale(1.01);
+}
+
+input[type='color']:active, input[type='color']:focus {
+    transition: transform 0.01s ease-in-out;
+    transform: scale(1);
+}
+
+input[type='color']{
+    width: 80px;
+    height: 80px;
+    border: none;
+    background: none;
+}
+
+input[type='color']::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+  
+input[type='color']::-webkit-color-swatch {
+    border: none;
+    border-radius: 50px;
+    box-shadow: rgba(65, 27, 27, 0.24) 0px 3px 8px;
+}
+
+#sliderValue {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    padding-top: 20px;
+}
+
+input[type='range'] {
+    -webkit-appearance: none;
+    background: white;
+    cursor: pointer;
+    width: 10rem;
+    border-radius: 25px;
 }
 
 .grid-container{
